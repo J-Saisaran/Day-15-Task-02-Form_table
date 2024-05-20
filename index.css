@@ -1,0 +1,15 @@
+.container{
+    margin: 20px;
+    width: auto;
+}
+
+body{
+    background-color: lightgray;
+}
+label{
+    padding-top: 5px;
+    padding-right: 10px;
+}
+button{
+    margin-top: 10px;
+}
