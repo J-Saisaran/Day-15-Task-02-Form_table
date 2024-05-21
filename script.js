@@ -6,6 +6,7 @@ function create_label(tag,attname,attval,content){
     lab.setAttribute("style","display:block");
     return lab;
 }
+
 function create_input(tag,attname1,attval1,attname2,attval2){
     var inp=document.createElement(tag);    
     inp.setAttribute(attname1,attval1);
@@ -13,6 +14,7 @@ function create_input(tag,attname1,attval1,attname2,attval2){
     inp.setAttribute("placeholder",attval2);
     return inp;
 }
+
 function create_input_type(tag,attname1,attval1,attname2,attval2){
     var inp=document.createElement(tag); 
     inp.className=attval1;   
@@ -44,6 +46,7 @@ function create_checkbox(){
     var seafoodlabel=create_label("label","for","Seafood","Seafood");
     form1.append(seafoodlabel);
 }
+
 var cont=document.createElement("div");
 cont.className="container";
 
@@ -113,6 +116,7 @@ form1.append(choiceoffood);
 
 var statelabel=create_label("label","for","State","State:");
 form1.append(statelabel);
+
 var stateinput=create_input("input","type","text","id","State");
 form1.append(stateinput);
 
@@ -122,17 +126,15 @@ form1.append(countrylabel);
 var countryinput=create_input("input","type","text","id","Country");
 form1.append(countryinput);
 
-
-
 create_checkbox();
-form1.append(statelabel,stateinput,countrylabel,countryinput);
+
 var but=document.createElement("button");
 but.setAttribute("type","button");
 but.id="but1";
 but.innerHTML="Submit";
 but.setAttribute("style","display:block");
 but.addEventListener("click",(element)=>{
-    element.onclick=data_2_table()});
+element.onclick=data_2_table()});
 
 form1.append(but);
 
@@ -149,26 +151,44 @@ head2.innerHTML="Temporary Database:";
 var table = document.createElement("table");
 table.className = "table table-striped";
 
+function tr(){
+    var tr_ele = document.createElement("tr");
+    return tr_ele;
+}
+
+function th(tagname,classname,value,content){
+var th_ele = document.createElement(tagname);
+th_ele.setAttribute(classname,value);
+th_ele.innerHTML = content;
+return th_ele; 
+}
+
+function td(tagname,content){
+    var td_ele = document.createElement(tagname);
+    td_ele.innerHTML = content;
+    return td_ele; 
+}
+
 var thead = document.createElement("thead");
 thead.className = "thead-dark";
-var thead_tr = create_tr();
-var th1 = create_th("th","scope","col","FirstName");
+var thead_tr = tr();
+var th1 = th("th","scope","col","FirstName");
 thead_tr.append(th1);
-var th2 = create_th("th","scope","col","LastName");
+var th2 = th("th","scope","col","LastName");
 thead_tr.append(th2);
-var th3 = create_th("th","scope","col","Addres Line 1");
+var th3 = th("th","scope","col","Addres Line 1");
 thead_tr.append(th3);
-var th4 = create_th("th","scope","col","Addres Line 2");
+var th4 = th("th","scope","col","Addres Line 2");
 thead_tr.append(th4);
-var th5 = create_th("th","scope","col","PIN");
+var th5 = th("th","scope","col","PIN");
 thead_tr.append(th5);
-var th6 = create_th("th","scope","col","Gender");
+var th6 = th("th","scope","col","Gender");
 thead_tr.append(th6);
-var th7 = create_th("th","scope","col","Choice of Food");
+var th7 = th("th","scope","col","Choice of Food");
 thead_tr.append(th7);
-var th8 = create_th("th","scope","col","State");
+var th8 = th("th","scope","col","State");
 thead_tr.append(th8);
-var th9 = create_th("th","scope","col","Country");
+var th9 = th("th","scope","col","Country");
 thead_tr.append(th9);
 
 thead.append(thead_tr);
@@ -183,34 +203,12 @@ table.append(thead,tbody);
 parent_div.append(head2,table);
 col_2.append(parent_div);
 
-
 r_ow.append(col_1,col_2);
 cont.append(r_ow);
 document.body.append(cont);
 
-
-
-
-function create_tr(){
-    var tr_ele = document.createElement("tr");
-    return tr_ele;
-}
-
-function create_th(tagname,classname,value,content){
-var th_ele = document.createElement(tagname);
-th_ele.setAttribute(classname,value);
-th_ele.innerHTML = content;
-return th_ele; 
-}
-
-
-function create_td(tagname,content){
-    var td_ele = document.createElement(tagname);
-    td_ele.innerHTML = content;
-    return td_ele; 
-}
 function data_2_table(){
-    var tbody_tr=create_tr();
+    var tbody_tr=tr();
     var firstname=document.getElementById("FirstName").value;
     
     var lastname=document.getElementById("LastName").value;
@@ -238,24 +236,23 @@ function data_2_table(){
     var state=document.getElementById("State").value;
     var country=document.getElementById("Country").value;
     
-    var td1 = create_td("td",firstname);
+    var td1 = td("td",firstname);
     tbody_tr.append(td1)
-    var td2 = create_td("td",lastname);
+    var td2 = td("td",lastname);
     tbody_tr.append(td2)
-    var td3 = create_td("td",add1);
+    var td3 = td("td",add1);
     tbody_tr.append(td3)
-    var td4 = create_td("td",add2);
+    var td4 = td("td",add2);
     tbody_tr.append(td4)
-    var td5 = create_td("td",pin);
+    var td5 = td("td",pin);
     tbody_tr.append(td5)
-    var td6 = create_td("td",gender);
+    var td6 = td("td",gender);
     tbody_tr.append(td6)
-    var td7 = create_td("td",choice_val);
+    var td7 = td("td",choice_val);
     tbody_tr.append(td7)
-    var td8 = create_td("td",state);
+    var td8 = td("td",state);
     tbody_tr.append(td8)
-    var td9 = create_td("td",country);
+    var td9 = td("td",country);
     tbody_tr.append(td9)
-    tbody_tr.append(td1,td2,td3,td4,td5,td6,td7,td8,td9);
     tbody.append(tbody_tr); 
 }
